@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="width:100%;height:100%;justify-items:center;align-content:center;align-items:center;text-align:center;vertical-align:central">
+    <h2 id="lb-title" style="color:var(--main-color-one);background-color:var(--main-bg-one)">Index</h2>
+    <div style="font-size:x-small">
+        <input id="color-picker" type="color" style="padding:0px;" />
+        <input id="backcolor-picker" type="color" style="padding:0px;" />
+    </div>
+
+    <div class="col-12 p-4 col-lg-6 p-4" style="position:absolute;justify-items:center;align-items:center;background-color:var(--main-bg-one)">
+
+        <input class="form-control" type="text" placeholder="نام کاربری" id="tb-username" />
+        <input class="form-control mt-4" type="password" placeholder="رمز عبور" id="tb-password" />
+        <button id="bt-login" class="btn btn-primary mt-4" style="width:100%">ورود</button>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#tb-username").focus();
+            $("#color-picker").val($(":root").css("--main-color-one"));
+            $("#backcolor-picker").val($(":root").css("--main-bg-one"));
+
+
+            $("#color-picker").on("input", function () {
+                $(":root").css("--main-color-one", $(this).val());
+            })
+
+            $("#backcolor-picker").on("input", function () {
+                $(":root").css("--main-bg-one", $(this).val());
+            })
+
+
+            $("#bt-login").on("click", function () {
+                var username = $("#tb-username").val();
+                if (username.trim() == "") {
+                    const swalWithBootstrapButtons = Swal.mixin({
+                        customClass: {
+                            confirmButton: 'btn btn-danger',
+                        },
+                        buttonsStyling: false
+                    })
+
+                    swalWithBootstrapButtons.fire({
+                        icon: 'error',
+                        title: 'تکمیل اطلاعات',
+                        text: 'لطفا نام کاربری و رمز را وارد نمایید',
+                        confirmButtonText: 'تایید',
+                    })
+                }
+                else {
+                    $.ajax({
+                        type: "POST",
+                        url: "@Url.Action("getData", "Home")",
+                        data: {
+                            a: $("#tb-username").val()
+                        },
+                        success: function (result) {
+                            if (result.success) {
+                                console.log(result.success);
+                            }
+                            else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'عدم ورود',
+                                    html: '<p style="direction:rtl;color:black;">' + result.error + '</p>',
+                                    confirmButtonText:'تایید',
+                                })
+                                /*alert(result.error);*/
+                            }
+
+                        }
+
+                    })
+                }
+            })
+        })
+
+    </script>
+</div>
+

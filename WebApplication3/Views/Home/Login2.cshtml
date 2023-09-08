@@ -1,0 +1,84 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login2</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert.min.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-3.7.0.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/sweetalert2.js"></script>
+</head>
+
+<body style="overflow:hidden; direction: rtl; left: 0; top: 0; right: 0; bottom: 0; background-color: #4d1765; background-image: linear-gradient(to right, #4d1765 10%, #000000); justify-items: center; align-items: center; text-align: center; flex-direction: row">
+    <section class="gradient-custom">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                    <div class="card bg-dark text-white" style="border-radius: 2rem;">
+                        <div class="card-body text-center">
+
+                            <div class="mb-md-1 mt-md-4">
+
+                                <h2 class="fw-bold mb-2 text-uppercase">ورود به سامانه</h2>
+                                <p class="text-white-50 mb-5">لطفا نام کاربری و رمز عبور خود را وارد نمایید</p>
+
+                                <div class="form-outline form-white mb-4">
+                                    <input type="text" id="tb-username" class="form-control form-control-lg" placeholder="نام کاربری" maxlength="20" />
+                                </div>
+
+                                <div class="form-outline form-white mb-4">
+                                    <input type="password" id="tb-password" class="form-control form-control-lg" placeholder="رمز عبور" maxlength="15" />
+                                </div>
+
+                                <button id="bt-login" class="btn btn-outline-light btn-lg px-5" type="submit">ورود</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        $(document).ready(function () {
+            $("#bt-login").on("click", function () {
+                $.ajax({
+                    url: "@Url.Action("checkLogin","Home")",
+                    type: "POST",
+                    data: {
+                        username: $("#tb-username").val(),
+                        password: $("#tb-password").val(),
+                    },
+                    success: function (result) {
+                        if (result.errorCode == "0") {
+                            Swal.fire({
+                                icon: "success",
+                                title: "ورود",
+                                text: "شما وارد شدید",
+                                timer:500,
+                            })
+
+                            window.location.replace("@Url.Action("index","Home")");
+                        }
+                        else {
+                            Swal.fire({
+                                icon: "error",
+                                title: "عدم ورود",
+                                html: '<p style="color:black">' + result.error + '</p>' ,
+                            })
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>
