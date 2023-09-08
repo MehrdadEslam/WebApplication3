@@ -15,7 +15,7 @@
 </head>
 <body style="margin:0px;">
     <div class="header" style="display:flex">
-
+        <button id="bt-signout" class="btn btn-primary" >sign out</button>
     </div>
 
     <div id="slider" class="slider open-sidebar">
@@ -33,8 +33,10 @@
         </div>
     </div>
 
-    <div class="footer" style="display:flex;color:white;text-align:center;justify-content:center;align-items:center;font-family:Tahoma;font-weight:100">
-        <p>این برنامه متعلق به مجموعه سیپ می باشد</p>
+    <div class="footer" style="display:flex;color:white;">
+        <div style="display: flex; position: absolute; align-items: center; justify-items: center; font-family: Tahoma; font-size: small; font-weight: 100; height: 100%">
+            <span>این برنامه متعلق به مجموعه سیپ می باشد</span>
+        </div>
     </div>
 
     <div class="content" style="background-color:#2b2a2a">
@@ -44,8 +46,22 @@
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)*@
 
-    <script>
+<script>
         $(document).ready(function () {
+
+            $("#bt-signout").on("click", function () {
+                $.ajax({
+                    url: "@Url.Action("signout" , "Home")",
+                    type: "GET",
+                    success: function () {
+                        window.location.replace("@Url.Action("login2", "Home")");
+                    },
+                    error: function (error) {
+                        console.table(error);
+                        alert(error.status + "\r\n" + error.statusText + "\r\n" + error.responseText);
+                    }
+                })
+            });
 
             $("#btn-sidebar").on("click", function () {
                 $("#slider").toggleClass("close-sidebar open-sidebar");
@@ -62,6 +78,6 @@
                 }
             })
         })
-    </script>
+</script>
 </body>
 </html>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,8 +11,31 @@ namespace WebApplication3.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if (VerifyLogin())
+                return View();
+            else
+                return View("Login2");
         }
+
+
+        /// <summary>بررسی ورود به سیستم کاربر</summary>
+        private bool VerifyLogin()
+        {
+            if (Session["login"] == null)
+                return false;
+            else
+                return true;
+            //var cookie = Request.Cookies["login"];
+            //if (cookie == null)
+            //    return false;
+            //else
+            //    return true;
+        }
+
+
+
+
+
         public ActionResult Login2()
         {
             return View();
@@ -27,13 +51,26 @@ namespace WebApplication3.Controllers
         {
             if (username == "mehrdad" && password == "123456")
             {
+                Session["login"] = "mehrdad";
+                //var cookie = new HttpCookie("login", username);
+                ////Response.Cookies.Add(cookie);
+                //Response.SetCookie(cookie);
+
                 return Json(new { errorCode = "0", error = "" });
             }
             else
             {
-                return Json(new { errorCode = "-1"  , error="نام کاربری و رمز عبور اشتباه است"});
+                return Json(new { errorCode = "-1", error = "نام کاربری و رمز عبور اشتباه است" });
             }
         }
+
+
+        public ActionResult signout()
+        {
+            Session["login"] = null;
+            return View("login2");
+        }
+
 
         [HttpPost]
         public ActionResult getData(string a)
