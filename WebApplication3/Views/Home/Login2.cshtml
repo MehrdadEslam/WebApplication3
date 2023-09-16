@@ -49,6 +49,16 @@
     </section>
     <script>
         $(document).ready(function () {
+            //setTimeout(function () {
+            //    $(this).attr('disabled', false);
+            //    $(this).val('Submit');
+            //}, 2000);
+
+            setTimeout(function () {
+                $('#tb-username').focus();
+            } , 200)
+
+
             $("#bt-login").on("click", function () {
                 $.ajax({
                     url: "@Url.Action("checkLogin","Home")",

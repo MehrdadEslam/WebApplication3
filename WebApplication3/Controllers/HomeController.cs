@@ -33,8 +33,21 @@ namespace WebApplication3.Controllers
         }
 
 
+        public ActionResult Bootstrap()
+        {
+            if (VerifyLogin())
+                return View();
+            else
+                return View("Login2");
+        }
 
-
+        public ActionResult sweetalert()
+        {
+            if (VerifyLogin())
+                return View();
+            else
+                return View("Login2");
+        }
 
         public ActionResult Login2()
         {

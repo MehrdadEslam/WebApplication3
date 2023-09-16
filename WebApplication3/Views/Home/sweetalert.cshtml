@@ -1,72 +1,42 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "sweetalert";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div style="width:100%;height:100%;justify-items:center;align-content:center;align-items:center;text-align:center;vertical-align:central">
-    <div>
-        <h1 class="animate__animated animate__rotateIn">نمایش متن ها</h1>
+<h2>sweetalert</h2>
+<div>
+    <button id="bt-msgbox" class="btn btn-primary">Sweet Alert</button>
+</div>
 
-    </div>
-
-    <h2 id="lb-title" style="color:var(--main-color-one);background-color:var(--main-bg-one)">Index</h2>
-    <div style="font-size:x-small">
-        <input id="color-picker" type="color" style="padding:0px;" />
-        <input id="backcolor-picker" type="color" style="padding:0px;color:#0094ff" />
-    </div>
-
-    @*<div class="col-12 p-4 col-lg-6 p-4" style="position:absolute;justify-items:center;align-items:center;background-color:var(--main-bg-one)">
-
-            <input class="form-control" type="text" placeholder="نام کاربری" id="tb-username" />
-            <input class="form-control mt-4" type="password" placeholder="رمز عبور" id="tb-password" />
-            <button id="bt-login" class="btn btn-primary mt-4" style="width:100%">ورود</button>
-
-        </div>*@
-
-
-    <div>
-        <a href="@Url.Action("sweetalert", "Home")">
-            <button id="bt-msgbox" class="btn btn-primary">Sweet Alert</button>
-        </a>
-    </div>
-
-    <div>
-        <a href="@Url.Action("bootstrap", "Home")">
-            <button id="bt-bootstrap" class="btn btn-dark">Bootstrap</button>
-        </a>
-    </div>
-
-    @*<script>
+<script>
         $(document).ready(function () {
-            $("#tb-username").focus();
-            $("#color-picker").val($(":root").css("--main-color-one"));
-            $("#backcolor-picker").val($(":root").css("--main-bg-one"));
 
-
-            $("#color-picker").on("input", function () {
-                $(":root").css("--main-color-one", $(this).val());
-            })
-
-            $("#backcolor-picker").on("input", function () {
-                $(":root").css("--main-bg-one", $(this).val());
-            })
 
             $("#bt-msgbox").on("click", function () {
                 swal.fire({
-                    title: "تکمیل فرم",
-                    html: `<input type="text" id="login" class="swal2-input" placeholder="Username" dir="rtl" >
-                           <input type="password" id="password" class="swal2-input" placeholder="Password" dir="rtl"  >` ,
+                    title: "لطفا رمز جدید خود را وارد نمایید",
+                    html: `<input type="password" id="login" class="swal2-input" placeholder="رمز عبور" style="width:80%" dir="rtl" >
+                           <input type="password" id="password" class="swal2-input" placeholder="تکرار رمز عبور" style="width:80%" dir="rtl"  >` ,
                     confirmButtonText: 'Ok',
                     focuseConfirm: false,
                     allowOutsideClick: false,
-                    showCloseButton:true,
+                    showCloseButton: true,
+                    didOpen: () => {
+                        swal.getPopup().querySelector('#login').focus();
+                    },
                     preConfirm: () => {
                         const login = swal.getPopup().querySelector('#login').value
                         const password = swal.getPopup().querySelector('#password').value
 
                         if (!login || !password) {
                             swal.showValidationMessage(`لطفا نام کاربری و رمز عبور را وارد نمایید`)
+                            swal.getPopup().querySelector('#login').focus();
+                        }
+                        else if (login != password) {
+                            
+                            swal.showValidationMessage(`رمز عبور و تکرا رمز عبور یکسنان نمی باشد`)
+                            swal.getPopup().querySelector('#login').focus();
                         }
                         return { login: login, password: password }
                     }
@@ -265,6 +235,4 @@
             })
         })
 
-    </script>*@
-</div>
-
+</script>

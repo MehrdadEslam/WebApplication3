@@ -1,0 +1,233 @@
+﻿
+@{
+    ViewBag.Title = "Bootstrap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container p-1" style="overflow-y:auto;">
+    <div class="row m-0">
+        <h2>Bootstrap</h2>
+    </div>
+
+
+    @*<div class="col-12 col-s-5 " style="background-color: #ff6a00; border-radius: 15px; margin: 5px; ">
+            <form class="form-control bg-light">
+                <div class="row">
+                    <div class="col-12 col-lg-5 ">
+                        <label for="floatingInput">نام بیمار</label>
+                        <input id="tb-firstname" type="text" class="form-control">
+
+                    </div>
+                    <div class="col-12 col-lg-5">
+                        <label>نام خانوادگی</label>
+                        <input type="text" class="form-control">
+
+                    </div>
+                    <div class="col-5 col-lg-2 ">
+                        <label>سن</label>
+                        <input type="number" class="form-control" placeholder="سن">
+                    </div>
+                </div>
+
+                <div>
+                    -
+                </div>
+
+            </form>
+        </div>*@
+
+    <form class="form-control bg-light" style="direction:rtl">
+
+
+        <div class="row">
+            <div class="col-12 col-lg-3 ">
+
+
+
+                <div class="row">
+                    <div class="form-floating col-8 p-5 pb-3">
+                        <label style="width:100%;color:#b7b7b7" for="floatingInput">بخش</label>
+                    </div>
+
+                    <div class="form-floating col-4 p-5 pb-3">
+                        <label style="width:100%;color:#b7b7b7" for="floatingInput">پرونده</label>
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="tb-username" placeholder="نام و نام خانوادگی بیمار">
+                    <label style="width:100%;color:#b7b7b7" for="floatingInput">نام و نام خانوادگی بیمار</label>
+                </div>
+
+
+                <div class="form-floating mb-3 col-4">
+                    <input type="number" class="form-control" placeholder="سن">
+                    <label style="width: 100%; color: #b7b7b7" for="floatingInput">سن</label>
+                </div>
+
+                <div class="form-floating mb-3 col-6">
+                    <input type="number" class="form-control" placeholder="تاریخ ویزیت">
+                    <label style="width: 100%; color: #b7b7b7" for="floatingInput">تاریخ ویزیت</label>
+                </div>
+
+                <div class="form-floating mb-3 col-6">
+                    <input type="number" class="form-control" placeholder="نظام پزشکی">
+                    <label style="width: 100%; color: #b7b7b7" for="floatingInput">نظام پزشکی</label>
+                </div>
+                <div class="form-floating mb-3 ">
+                    <input type="text" class="form-control" placeholder="پزشک معالج">
+                    <label style="width: 100%; color: #b7b7b7" for="floatingInput">پزشک معالج</label>
+                </div>
+                <div class="form-floating mb-3 ">
+                    <select class="form-select" aria-label="عنوان پزشک معالج" style="direction:rtl">
+                        <option selected disabled>عنوان پزشک معالج</option>
+                        <option value="1">جناب آقای دکتر</option>
+                        <option value="2">سرکار خانم دکتر</option>
+                        <option value="3">جناب آقای</option>
+                        <option value="4">سرکار خانم</option>
+                    </select>
+                </div>
+
+                <div class="form-floating mb-3 ">
+                    <select class="form-select" aria-label="تخصص پزشک معالج" style="direction:rtl">
+                        <option selected disabled>تخصص پزشک معالج</option>
+                        <option value="1">پزشک عمومی</option>
+                        <option value="2">متخصص</option>
+                        <option value="3">فوق تخصص</option>
+                        <option value="4">مامایی</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-9 bg-dark-subtle ">
+
+                <div class="row">
+                    <div class="col-3 col-lg-2 p-0" style="display:block;height:65px;" >
+                        
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-3 col-lg-2 p-0">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" placeholder="کد">
+                            <label style="width: 100%; color: #b7b7b7" for="floatingInput">کد</label>
+                        </div>
+                    </div>
+
+                    <div class="col-9 col-lg-7 p-0">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" placeholder="خدمت">
+                            <label style="width: 100%; color: #b7b7b7" for="floatingInput">خدمت</label>
+                        </div>
+                    </div>
+                    <div class="col-3 col-lg-1 p-0">
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control" placeholder="تعداد">
+                            <label style="width: 100%; color: #b7b7b7" for="floatingInput">تعداد</label>
+                        </div>
+                    </div>
+                    <div class="col-3 col-lg-1 p-1 pb-3">
+                        <div class="form-floating" style="height:100%;width:100%">
+                            <button class="btn btn-primary" style="height:100%;width:100%" type="button">اضافه</button>
+                        </div>
+                    </div>
+                    <div class="col-3 col-lg-1 p-1 pb-3">
+                        <div class="form-floating" style="height:100%;width:100%">
+                            <button class="btn btn-danger" style="height:100%;width:100%" type="button">حذف</button>
+                        </div>
+                    </div>
+                    <div class="row p-0 m-0">
+                        <table class="table table-hover table-dark" style="height:100%">
+                            <thead>
+                                <tr>
+                                    <th style="width:70px;">کد</th>
+                                    <th>خدمت</th>
+                                    <th style="width:70px;">تعداد</th>
+                                    <td>مبلغ</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>705015</td>
+                                    <td>سونوگرافی شکم و لگن</td>
+                                    <td>1</td>
+                                    <td>5632000</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-5 col-lg-8 ">
+            </div>
+
+        </div>
+    </form>
+
+    <div class="col-12 col-s-5 " style="background-color: #ff6a00; border-radius: 15px; margin: 0px;padding:0; ">
+
+    </div>
+
+
+    @*<form class="form-control bg-light" style="direction:rtl">
+
+
+            <div class="row">
+                <div class="col-12 col-lg-5 ">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="tb-username" placeholder="نام بیمار">
+                        <label style="width:100%;color:#b7b7b7" for="floatingInput">نام بیمار</label>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-5 ">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" placeholder="نام خانوادگی">
+                        <label style="width: 100%; color: #b7b7b7" for="floatingInput">نام خانوادگی</label>
+                    </div>
+                </div>
+
+                <div class="col-5 col-lg-2 ">
+                    <div class="form-floating mb-3">
+                        <input type="number" class="form-control" placeholder="سن">
+                        <label style="width: 100%; color: #b7b7b7" for="floatingInput">سن</label>
+                    </div>
+                </div>
+
+                <div class="col-12 col-lg-5 ">
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="Email address">
+                        <label for="floatingInput" style="width: 100%; color: #b7b7b7 ">Email address</label>
+                    </div>
+                </div>
+            </div>
+        </form>*@
+
+    @*<form class="form-control bg-light">
+
+            <div class="form-floating mb-3" style="direction:rtl">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput" style="width:100%;color:red">Email address</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+        </form>*@
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $("#tb-username").focus();
+    })
+</script>
